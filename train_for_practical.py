@@ -1,47 +1,52 @@
 
 ##bubble sort
-def bubble_Sort(unsorted):
-    for i,Round in enumerate(unsorted):
-        for j,item in enumerate(unsorted):
-            if j<len(unsorted)-1 and item > unsorted[j+1]:
-                unsorted[j],unsorted[j+1]=unsorted[j+1],unsorted[j]
-    return unsorted
+def bubble_Sort(array):
+    for i,Round in enumerate(array):
+        for j,item in enumerate(array):
+            if j+1<len(array) and item > array[j+1]:
+                array[j],array[j+1]=array[j+1],array[j]
+    return array
 ##print(bubble_Sort([8,2,3,6,9,4]))
 
 ## quick sort
 def Quicky(unsorted):
-    if len(unsorted)<=1:
+   if len(unsorted)<2:
         return unsorted
-    pivot=unsorted[0]
-    return Quicky([i for i in unsorted if i < pivot ])+[pivot] +Quicky([i for i in unsorted if i > pivot ])
-##print(Quicky([8,2,3,6,9,4]))
+   pivot=unsorted[0]
+   left=[i for i in unsorted[1:] if i<pivot]
+   right=[i for i in unsorted[1:] if i>=pivot]
+   return Quicky(left)+[pivot]+Quicky(right)
+##print(Quicky([8,2,2,3,6,9,4]))
 ## merge sort 
 def mergy(unsorted):
-   if len(unsorted)>1:
-      middy=len(unsorted)//2
-      left= unsorted[:middy ]
-      right= unsorted[middy:]
-      mergy(left)
-      mergy(right)
-      i=j=k=0
-      while i<len(left) and j<len(right):
-          if left[i]<right[j]:
-              unsorted[k]= left[i]
-              i+=1
-          else:
-              unsorted[k]= right[j]
-              j+=1
-          k+=1
-      while i<len(left):
-              unsorted[k]= left[i]
-              i+=1
-              k+=1
-      while j<len(right):
-          unsorted[k]= right[j]
-          j+=1
-          k+=1
-      print(unsorted)
-##mergy([8,2,3,6,9,4])
+  if len(unsorted)>1:
+    
+   mid=len(unsorted)//2
+   left=unsorted[:mid]
+   right=unsorted[mid:]
+   mergy(left)
+   mergy(right)
+   i=j=k=0
+   while i<len(left) and j<len(right):
+       if left[i]<right[j]:
+           unsorted[k]=left[i]
+           i+=1
+       else:
+           unsorted[k]=right[j]
+           j+=1
+       k+=1
+   while i<len(left):
+       unsorted[k]=left[i]
+       i+=1
+       k+=1
+   while j<len(right):
+       unsorted[k]=right[j]
+       j+=1
+       k+=1
+  
+
+
+mergy([8,2,3,6,9,4])
 graph1={
     's': ['A' , 'B' , 'D'] , 
     
@@ -113,4 +118,4 @@ def factorial(num):
     if num <2:
         return num
     return num *factorial(num-1)
-print(factorial(5))
+##print(factorial(5))
