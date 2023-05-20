@@ -98,4 +98,19 @@ def binarySearch(arr,goal):
         else:
             low=mid+1
     return -1
-print(binarySearch([1,2,3,4,62,100,151],100))
+##print(binarySearch([1,2,3,4,62,100,151],100))
+
+
+def removeDuplicate(word):
+    if len(word)<2:
+        return word
+    if word[0]==word[1]:
+        return removeDuplicate(word[1::])
+    return word[0]+removeDuplicate(word[1::])
+##print(removeDuplicate("HHBBO"))
+
+def factorial(num):
+    if num <2:
+        return num
+    return num *factorial(num-1)
+print(factorial(5))
